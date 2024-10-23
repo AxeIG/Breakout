@@ -1,5 +1,5 @@
 #include "PowerupManager.h"
-
+#include <random>
 sf::RenderWindow* PowerupManager::_window = nullptr;
 Paddle* PowerupManager::_paddle = nullptr;
 Ball* PowerupManager::_ball = nullptr;
@@ -69,53 +69,36 @@ void PowerupManager::render()
 
 void PowerupManager::spawnPowerup()
 {
-    //// TODO finish this.
-    //switch (rand() % 5)
-    //{
-    //case 0:
-    //    _powerups.push_back(new PowerupBigPaddle(_window, _paddle, _ball));
-    //    break;
-    //case 1:
-    //    _powerups.push_back(new PowerupSlowBall(_window, _paddle, _ball));
-    //    break;
-    //case 2:
-    //    _powerups.push_back(new PowerupFastBall(_window, _paddle, _ball));
-    //    break;
-    //case 3:
-    //    _powerups.push_back(new PowerupSmallPaddle(_window, _paddle, _ball));
-    //    break;
-    //case 4:
-    //    _powerups.push_back(new PowerupFireBall(_window, _paddle, _ball));
-    //    break;
-    //case 5:
-    //    _powerups.push_back(new PowerupStickyBall(_window, _paddle, _ball));
-    //case6:
-    //    break;
-    //}
+    
+    std::random_device rd;                        // Seed
+    std::mt19937 gen(rd());                       // Mersenne Twister RNG
+    std::uniform_int_distribution<> dis(0, 5);    // Uniform distribution between 0 and 5
 
-    // TODO finish this.
-    switch (rand() % 5)
+    int randomPowerup = dis(gen);  // Get random number in the range [0, 5]
+    switch (randomPowerup)
     {
     case 0:
-        _powerups.push_back(new PowerupStickyBall(_window, _paddle, _ball));
+        _powerups.push_back(new PowerupBigPaddle(_window, _paddle, _ball));
         break;
     case 1:
-        _powerups.push_back(new PowerupStickyBall(_window, _paddle, _ball));
+        _powerups.push_back(new PowerupSlowBall(_window, _paddle, _ball));
         break;
     case 2:
-        _powerups.push_back(new PowerupStickyBall(_window, _paddle, _ball));
+        _powerups.push_back(new PowerupFastBall(_window, _paddle, _ball));
         break;
     case 3:
-        _powerups.push_back(new PowerupStickyBall(_window, _paddle, _ball));
+        _powerups.push_back(new PowerupSmallPaddle(_window, _paddle, _ball));
         break;
     case 4:
-        _powerups.push_back(new PowerupStickyBall(_window, _paddle, _ball));
+        _powerups.push_back(new PowerupFireBall(_window, _paddle, _ball));
         break;
     case 5:
         _powerups.push_back(new PowerupStickyBall(_window, _paddle, _ball));
-    case6:
+    default:
         break;
     }
+
+ 
 }
 
 void PowerupManager::checkCollision()
