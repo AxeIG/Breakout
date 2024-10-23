@@ -25,12 +25,12 @@ void ParticleManager::spawnParticles(sf::Vector2f pos, sf::Vector2f dir, int spa
 	
 }
 
-void ParticleManager::spawnTrailParticle(sf::Vector2f pos)
+void ParticleManager::spawnTrailParticle(sf::Vector2f pos, sf::Color colour)
 {
 	Particle* particle = new Particle();
 	sf::Vector2f trail_size = sf::Vector2f(TRAIL_SIZE, TRAIL_SIZE);
 
-	particle->initialize(trail_size, pos, sf::Color::Cyan);
+	particle->initialize(trail_size, pos, colour);
 
 	_trail.push_back(particle);
 }

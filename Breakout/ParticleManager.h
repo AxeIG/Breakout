@@ -13,7 +13,7 @@ public:
 	}
 
 	static void spawnParticles(sf::Vector2f pos, sf::Vector2f dir, int spawn_number);
-	static void spawnTrailParticle(sf::Vector2f pos);
+	static void spawnTrailParticle(sf::Vector2f pos, sf::Color colour);
 	static void update(float dt);
 	static void render(sf::RenderWindow* window);
 

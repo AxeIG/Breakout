@@ -18,6 +18,10 @@ Ball::~Ball()
 
 void Ball::update(float dt)
 {
+    ParticleManager::spawnTrailParticle(sf::Vector2f(_sprite.getPosition().x + BALL_RADIUS / 2,
+        _sprite.getPosition().y + BALL_RADIUS / 2),
+        _sprite.getFillColor());
+
     // check for powerup, tick down or correct
     if (_timeWithPowerupEffect > 0.f)
     {
@@ -101,8 +105,6 @@ void Ball::update(float dt)
     }
 
 
-    ParticleManager::spawnTrailParticle(sf::Vector2f(_sprite.getPosition().x + BALL_RADIUS / 2, _sprite.getPosition().y + BALL_RADIUS / 2));
-    ParticleManager::update(dt);
 
 }
 

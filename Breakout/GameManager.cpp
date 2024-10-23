@@ -2,6 +2,7 @@
 #include "Ball.h"
 #include "PowerupManager.h"
 #include <iostream>
+#include "ParticleManager.h"
 
 GameManager::GameManager(sf::RenderWindow* window)
     : _window(window), _paddle(nullptr), _ball(nullptr), _brickManager(nullptr), _powerupManager(nullptr),
@@ -112,6 +113,7 @@ void GameManager::update(float dt)
     _paddle->update(dt);
     _ball->update(dt);
     _powerupManager->update(dt);
+    ParticleManager::update(dt);
 }
 
 void GameManager::loseLife()
