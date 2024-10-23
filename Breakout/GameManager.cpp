@@ -21,11 +21,9 @@ GameManager::GameManager(sf::RenderWindow* window)
 void GameManager::initialize()
 {
     _paddle = new Paddle(_window);
+    _ball = new Ball(_window, 400.0f, this);
     _brickManager = new BrickManager(_window, this);
     _messagingSystem = new MessagingSystem(_window);
-    _ball = new Ball(_window, 400.0f, this);
-    //_ball = new Ball(_window, 400.0f, this, _powerupManager); 
-    //_powerupManager = new PowerupManager(_window, _paddle, _ball);
     _ui = new UI(_window, _lives, this);
 
     PowerupManager::initialize(_window, _paddle, _ball);
@@ -52,8 +50,6 @@ void GameManager::update(float dt)
     if (_lives <= 0)
     {
         _masterText.setString("Game over.");
-
-      
         return;
     }
     if (_levelComplete)
@@ -120,12 +116,28 @@ void GameManager::update(float dt)
     ParticleManager::update(dt);
 }
 
+void ScreenShake(sf::RenderWindow* window, int duration, int intensity)
+{
+    int x, y;
+    x = window->getPosition().x;
+    y = window->getPosition().y;
+    // ScreenShake
+    for (int i = 0; i < duration; i++)
+    {
+        int rx = rand() % intensity - intensity/2;
+        int ry = rand() % intensity - intensity / 2;
+        window->setPosition(sf::Vector2i(x + rx, y + ry));
+
+    }
+    window->setPosition(sf::Vector2i(x, y));
+}
+
 void GameManager::loseLife()
 {
     _lives--;
     _ui->lifeLost(_lives);
-
-    // TODO screen shake.
+    ScreenShake(_window, 110, 50);
+    
 }
 
 void GameManager::render()

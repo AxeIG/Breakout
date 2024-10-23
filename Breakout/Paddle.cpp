@@ -36,7 +36,6 @@ void Paddle::moveRight(float dt)
 
 void Paddle::mouseDrag( int mouseX)
 {
-    //setPosition(mouseX - _offset, getBounds().getPosition().y);
     _sprite.setPosition( mouseX - _offset, getBounds().getPosition().y);
 }
 

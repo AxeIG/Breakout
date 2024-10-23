@@ -81,7 +81,6 @@ void Ball::update(float dt)
         _direction = { 1, 1 };
         _gameManager->loseLife();
     }
-    sf::Vector2f points = sf::Vector2f(0, 0);
 
     // Stickyball effect
     if ((_isStickyBall) && (_sprite.getGlobalBounds().intersects(_gameManager->getPaddle()->getBounds())))
