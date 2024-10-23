@@ -8,6 +8,7 @@ enum POWERUPS
     fastBall,
     slowBall,
     fireBall,
+    stickyBall,
     none
 };
 
@@ -61,5 +62,7 @@ constexpr int INITIAL_LIVES = 3;
 const sf::Color paddleEffectsColour = sf::Color(100, 100, 200); // blue-ish?
 const sf::Color speedEffectColour = sf::Color(255, 250, 205); // lemon chiffon -- very fancy.
 const sf::Color fireballEffectColour = sf::Color(212, 94, 56); // fier-like red
+const sf::Color stickyBallEffect = sf::Color(50, 205, 50); // lime green
+
 
 

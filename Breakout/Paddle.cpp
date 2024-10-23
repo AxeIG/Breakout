@@ -4,7 +4,8 @@
 Paddle::Paddle(sf::RenderWindow* window)
     : _window(window), _width(PADDLE_WIDTH), _timeInNewSize(0.0f), _isAlive(true)
 {
-    _sprite.setFillColor(sf::Color::Cyan);
+    _colour = sf::Color::Cyan;
+    _sprite.setFillColor(_colour);
     _sprite.setPosition((window->getSize().x - _width) / 2.0f, window->getSize().y - 50.0f);
     _sprite.setSize(sf::Vector2f(_width, PADDLE_HEIGHT));
 }
@@ -72,7 +73,7 @@ void Paddle::setWidth(float coeff, float duration)
     _sprite.setPosition(newX, _sprite.getPosition().y);
 }
 
-void Paddle::calculateOffset(int x)
+void Paddle::calculateMouseOffset(int x)
 {
     _offset = x - getBounds().getPosition().x;
 }

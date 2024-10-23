@@ -44,7 +44,7 @@ private:
     Paddle* _paddle;
     Ball* _ball;
     BrickManager* _brickManager;
-    PowerupManager* _powerupManager;
+    //PowerupManager* _powerupManager;
     MessagingSystem* _messagingSystem;
     UI* _ui;
 

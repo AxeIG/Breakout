@@ -17,10 +17,12 @@ public:
     void render();
     sf::FloatRect getBounds() const;
     void setWidth(float coeff, float duration);
+    void setFillColour(sf::Color colour) { _sprite.setFillColor(colour); }
 
-    void calculateOffset(int x);
+    void calculateMouseOffset(int x);
     bool isDragged() { return _isDragged; }
     void setDragged(bool val) { _isDragged = val; }
+    sf::Color getColour() { return _colour; };
 
 private:
 
@@ -31,6 +33,7 @@ private:
     bool _isAlive;
     float _timeInNewSize = 0.0f;
     int _offset;
+    sf::Color _colour;
 
     bool _isDragged;
 };

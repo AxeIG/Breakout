@@ -86,8 +86,14 @@ void UI::updatePowerupScreenInfo(std::pair<POWERUPS, float> powerup)
 		_progressBar.setFillColor(fireballEffectColour);
 
 		break;
+	case stickyBall:
+		oss << std::fixed << std::setprecision(2) << powerup.second;
+		_powerupText.setString("sticky");
+		_powerupText.setFillColor(stickyBallEffect);
+		/*_progressBar.setSize(sf::Vector2f(powerup.second / 5.0f * 200, 20));
+		_progressBar.setFillColor(stickyBallEffect);*/
+		break;
 	case none:
-		//_progressBorder.isdead
 		_powerupText.setString("");
 		_progressBar.setSize(sf::Vector2f(0, 0));
 		

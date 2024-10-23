@@ -3,6 +3,7 @@
 
 
 class GameManager;  // forward declaration
+class PowerupManager;
 
 
 
@@ -14,6 +15,9 @@ public:
     void render();
     void setVelocity(float coeff, float duration);
     void setFireBall(float duration);
+    void setStickyBall(bool val);
+
+    sf::FloatRect getBounds();
 
 private:
     sf::CircleShape _sprite;
@@ -22,11 +26,15 @@ private:
     float _velocity;
     bool _isAlive;
     bool _isFireBall;
+    bool _isStickyBall;
+    bool _isStuck;
     float _timeWithPowerupEffect;
 
     GameManager* _gameManager;  // Reference to the GameManager
 
     static constexpr float RADIUS = 10.0f;      
     static constexpr float VELOCITY = 350.0f;   // for reference.
+
+    float _stuck_point;
 };
 

@@ -1,5 +1,4 @@
 #include "ParticleManager.h"
-#include <time.h>       /* time */
 #include <random>
 
 std::random_device rd;  // Random device for seeding
