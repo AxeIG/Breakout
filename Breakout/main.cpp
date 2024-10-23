@@ -19,6 +19,7 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+                
         }
 
         deltaTime = clock.restart().asSeconds();

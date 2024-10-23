@@ -48,17 +48,17 @@ void UI::updatePowerupText(std::pair<POWERUPS, float> powerup)
 	case slowBall:
 		oss << std::fixed << std::setprecision(2) << powerup.second;
 		_powerupText.setString("slow " + oss.str());
-		_powerupText.setFillColor(ballEffectsColour);
+		_powerupText.setFillColor(speedEffectColour);
 		break;
 	case fastBall:
 		oss << std::fixed << std::setprecision(2) << powerup.second;
 		_powerupText.setString("fast " + oss.str());
-		_powerupText.setFillColor(ballEffectsColour);
+		_powerupText.setFillColor(speedEffectColour);
 		break;
 	case fireBall:
 		oss << std::fixed << std::setprecision(2) << powerup.second;
 		_powerupText.setString("fire " + oss.str());
-		_powerupText.setFillColor(extraBallEffectsColour);
+		_powerupText.setFillColor(fireballEffectColour);
 		break;
 	case none:
 		_powerupText.setString("");

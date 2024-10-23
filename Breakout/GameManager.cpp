@@ -38,6 +38,8 @@ void GameManager::update(float dt)
     if (_lives <= 0)
     {
         _masterText.setString("Game over.");
+
+      
         return;
     }
     if (_levelComplete)

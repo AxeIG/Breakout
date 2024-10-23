@@ -3,7 +3,7 @@
 PowerupFastBall::PowerupFastBall(sf::RenderWindow* window, Paddle* paddle, Ball* ball)
     : PowerupBase(window, paddle, ball)
 {
-    _sprite.setFillColor(ballEffectsColour);
+    _sprite.setFillColor(speedEffectColour);
 }
 
 PowerupFastBall::~PowerupFastBall()
