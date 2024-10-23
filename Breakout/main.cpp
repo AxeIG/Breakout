@@ -9,7 +9,7 @@ int main()
     GameManager gameManager(&window);
     gameManager.initialize();
 
-    sf::Clock clock;
+    sf::Clock _clock;
     float deltaTime;
 
     while (window.isOpen())
@@ -22,7 +22,7 @@ int main()
                 
         }
 
-        deltaTime = clock.restart().asSeconds();
+        deltaTime = _clock.restart().asSeconds();
 
         gameManager.update(deltaTime);
 

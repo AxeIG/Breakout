@@ -24,6 +24,7 @@ void GameManager::initialize()
     _powerupManager = new PowerupManager(_window, _paddle, _ball);
     _ui = new UI(_window, _lives, this);
 
+
     // Create bricks
     _brickManager->createBricks(5, 10, 80.0f, 30.0f, 5.0f);
 }
@@ -33,12 +34,16 @@ void GameManager::update(float dt)
     _powerupInEffect = _powerupManager->getPowerupInEffect();
     _ui->updatePowerupScreenInfo(_powerupInEffect);
     _powerupInEffect.second -= dt;
-    
-    
-   // _mousePos = sf::Vector2f(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y);
     _mousePos = (sf::Mouse::getPosition(*_window));
+
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+    {
+        _particle_manager.spawnParticles(sf::Vector2f(_mousePos), sf::Vector2f(-1,1),3);
+    }
+    
+
        
-    std::cout << "X: " << _mousePos.x << " Y: " << _mousePos.y << std::endl;
     if (_lives <= 0)
     {
         _masterText.setString("Game over.");
@@ -103,17 +108,6 @@ void GameManager::update(float dt)
        if (!sf::Mouse::isButtonPressed(sf::Mouse::Left))
         _paddle->setDragged(false);
    }
-  
-   //std::cout << _paddle->getBounds().getPosition().x << std::endl;
-
-    //std::cout<< "Paddle X: " << _paddle->getBounds().getPosition().x << " X: " << _mousePos.x << std::endl;
-    //std::cout<< "Paddle Y: " << _paddle->getBounds().getPosition().y << " Y: " << _mousePos.y << std::endl;
-    
-   /* if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-    {
-       std::cout << "left button pressed";
-    }*/
-
     // update everything 
     _paddle->update(dt);
     _ball->update(dt);
@@ -135,6 +129,7 @@ void GameManager::render()
     _brickManager->render();
     _powerupManager->render();
     _window->draw(_masterText);
+    
     _ui->render();
 }
 

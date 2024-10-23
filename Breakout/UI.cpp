@@ -109,7 +109,6 @@ void UI::render()
 		_window->draw(_progressBar);
 	}
 
-
 	for (sf::CircleShape life : _lives)
 	{
 		_window->draw(life);

@@ -75,5 +75,4 @@ void Paddle::setWidth(float coeff, float duration)
 void Paddle::calculateOffset(int x)
 {
     _offset = x - getBounds().getPosition().x;
-    std::cout << _offset << std::endl;
 }

@@ -11,7 +11,7 @@ PowerupBase::PowerupBase(sf::RenderWindow* window, Paddle* paddle, Ball* ball)
     _isAlive = true;
     _ball = ball;
 
-    // Initial position and direction with some variability
+    // Initial position and _direction with some variability
     float initialX = rand() % window->getSize().x * 0.9 + window->getSize().x * 0.05;
     _sprite.setPosition(initialX, 5);
     _direction = { 0.0f, FLOAT_DOWN_SPEED };
@@ -64,9 +64,9 @@ bool PowerupBase::checkCollisionWithPaddle()
     return false;
 }
 
-void PowerupBase::setAlive(bool alive)
+void PowerupBase::setAlive(bool _alive)
 {
-    _isAlive = alive;
+    _isAlive = _alive;
 }
 
 bool PowerupBase::isAlive()

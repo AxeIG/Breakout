@@ -79,7 +79,7 @@ public:
     /// The new view will affect everything that is drawn, until
     /// another view is set.
     /// The render target keeps its own copy of the view object,
-    /// so it is not necessary to keep the original one alive
+    /// so it is not necessary to keep the original one _alive
     /// after calling this function.
     /// To restore the original view of the target, you can pass
     /// the result of getDefaultView() to this function.

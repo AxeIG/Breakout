@@ -16,6 +16,7 @@ constexpr unsigned int WINDOW_WIDTH = 800;
 constexpr unsigned int WINDOW_HEIGHT = 600;
 constexpr const char* WINDOW_TITLE = "Game";
 
+
 // Paddle settings
 constexpr float PADDLE_WIDTH = 150.0f;
 constexpr float PADDLE_HEIGHT = 20.0f;
@@ -31,6 +32,17 @@ constexpr float BRICK_HEIGHT = 20.0f;
 constexpr float BRICK_PADDING = 5.0f;
 constexpr int BRICK_ROWS = 5;
 constexpr int BRICK_COLUMNS = 10;
+
+// Particle setting
+constexpr float PARTICLE_SIZE = 15.0f;
+constexpr float TRAIL_SIZE = 6.0f;
+constexpr float PARTICLE_OFFSET = 15.0f;
+constexpr float PARTICLE_SPEED = 40.0f;
+constexpr float PARTICLE_TIME_SPAN = 0.5f;
+constexpr float NUMBER_OF_PARTICLES = 5.0f;
+
+//Trail Settings
+
 
 // Power-up settings
 constexpr float POWERUP_RADIUS = 15.0f;

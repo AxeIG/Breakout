@@ -1,5 +1,6 @@
 #include "Ball.h"
 #include "GameManager.h" // avoid cicular dependencies
+#include "ParticleManager.h"
 
 Ball::Ball(sf::RenderWindow* window, float velocity, GameManager* gameManager)
     : _window(window), _velocity(velocity), _gameManager(gameManager),
@@ -8,6 +9,7 @@ Ball::Ball(sf::RenderWindow* window, float velocity, GameManager* gameManager)
     _sprite.setRadius(RADIUS);
     _sprite.setFillColor(sf::Color::Cyan);
     _sprite.setPosition(0, 300);
+
 }
 
 Ball::~Ball()
@@ -81,10 +83,13 @@ void Ball::update(float dt)
 
         // Adjust position to avoid getting stuck inside the paddle
         _sprite.setPosition(_sprite.getPosition().x, _gameManager->getPaddle()->getBounds().top - 2 * RADIUS);
+
+        ParticleManager::spawnParticles(_sprite.getPosition(), sf::Vector2f(_direction.x * -1, _direction.y *- 1), NUMBER_OF_PARTICLES);
     }
 
     // collision with bricks
     int collisionResponse = _gameManager->getBrickManager()->checkCollision(_sprite, _direction);
+
     if (_isFireBall) return; // no collisisons when in fireBall mode.
     if (collisionResponse == 1)
     {
@@ -94,10 +99,16 @@ void Ball::update(float dt)
     {
         _direction.y *= -1; // Bounce vertically
     }
+
+
+    ParticleManager::spawnTrailParticle(sf::Vector2f(_sprite.getPosition().x + BALL_RADIUS / 2, _sprite.getPosition().y + BALL_RADIUS / 2));
+    ParticleManager::update(dt);
+
 }
 
 void Ball::render()
 {
+    ParticleManager::render(_window);
     _window->draw(_sprite);
 }
 

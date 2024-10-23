@@ -20,7 +20,7 @@ public:
     virtual std::pair<POWERUPS, float> applyEffect() = 0; // Pure virtual method for applying the power-up effect
     bool checkCollisionWithPaddle();
 
-    void setAlive(bool alive);
+    void setAlive(bool _alive);
     bool isAlive();
 
 protected: // Protected so derived classes can access these members

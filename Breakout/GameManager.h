@@ -7,6 +7,7 @@
 #include "PowerupManager.h"
 #include "MessagingSystem.h"
 #include "UI.h"
+#include "ParticleManager.h"
 
 
 
@@ -48,8 +49,8 @@ private:
     UI* _ui;
 
     static constexpr float PAUSE_TIME_BUFFER = 0.5f;
-    static constexpr float POWERUP_FREQUENCY = 7.5f;    // time between minimum powerup spawn
+    static constexpr float POWERUP_FREQUENCY = 7.5f;    // time between minimum powerup spawnParticle
 
-
+    ParticleManager _particle_manager;
     sf::Vector2i _mousePos;
 };
