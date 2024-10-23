@@ -33,6 +33,12 @@ void Paddle::moveRight(float dt)
     }
 }
 
+void Paddle::mouseDrag( int mouseX)
+{
+    //setPosition(mouseX - _offset, getBounds().getPosition().y);
+    _sprite.setPosition( mouseX - _offset, getBounds().getPosition().y);
+}
+
 void Paddle::update(float dt)
 {
     if (_timeInNewSize > 0)
@@ -64,4 +70,10 @@ void Paddle::setWidth(float coeff, float duration)
     _timeInNewSize = duration;
     float newX = _sprite.getPosition().x + (_width - PADDLE_WIDTH) / 2;
     _sprite.setPosition(newX, _sprite.getPosition().y);
+}
+
+void Paddle::calculateOffset(int x)
+{
+    _offset = x - getBounds().getPosition().x;
+    std::cout << _offset << std::endl;
 }

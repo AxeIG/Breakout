@@ -236,7 +236,7 @@ bool operator ==(const Vector2<T>& left, const Vector2<T>& right);
 /// \relates Vector2
 /// \brief Overload of binary operator !=
 ///
-/// This operator compares strict difference between two vectors.
+/// This operator compares strict _offset between two vectors.
 ///
 /// \param left  Left operand (a vector)
 /// \param right Right operand (a vector)

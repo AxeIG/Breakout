@@ -199,7 +199,7 @@ bool operator ==(const Rect<T>& left, const Rect<T>& right);
 /// \relates Rect
 /// \brief Overload of binary operator !=
 ///
-/// This operator compares strict difference between two rectangles.
+/// This operator compares strict _offset between two rectangles.
 ///
 /// \param left  Left operand (a rectangle)
 /// \param right Right operand (a rectangle)

@@ -267,7 +267,7 @@ private:
 /// sf::RenderTexture is the little brother of sf::RenderWindow.
 /// It implements the same 2D drawing and OpenGL-related functions
 /// (see their base class sf::RenderTarget for more details),
-/// the difference is that the result is stored in an off-screen
+/// the _offset is that the result is stored in an off-screen
 /// texture rather than being show in a window.
 ///
 /// Rendering to a texture can be useful in a variety of situations:

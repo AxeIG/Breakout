@@ -31,10 +31,14 @@ void GameManager::initialize()
 void GameManager::update(float dt)
 {
     _powerupInEffect = _powerupManager->getPowerupInEffect();
-    _ui->updatePowerupText(_powerupInEffect);
+    _ui->updatePowerupScreenInfo(_powerupInEffect);
     _powerupInEffect.second -= dt;
     
-
+    
+   // _mousePos = sf::Vector2f(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y);
+    _mousePos = (sf::Mouse::getPosition(*_window));
+       
+    std::cout << "X: " << _mousePos.x << " Y: " << _mousePos.y << std::endl;
     if (_lives <= 0)
     {
         _masterText.setString("Game over.");
@@ -82,6 +86,33 @@ void GameManager::update(float dt)
     // move paddle
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) _paddle->moveRight(dt);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) _paddle->moveLeft(dt);
+   float x = sf::Mouse::getPosition(*_window).x;
+   
+    
+   if ((sf::Mouse::isButtonPressed(sf::Mouse::Left)) && (_paddle->getBounds().contains(sf::Vector2f(_mousePos))))
+   {
+       if (_paddle->isDragged() == false)
+       {
+           _paddle->calculateOffset(_mousePos.x);
+           _paddle->setDragged(true);
+       }
+   }
+   if (_paddle->isDragged())
+   {
+       _paddle->mouseDrag(_mousePos.x);
+       if (!sf::Mouse::isButtonPressed(sf::Mouse::Left))
+        _paddle->setDragged(false);
+   }
+  
+   //std::cout << _paddle->getBounds().getPosition().x << std::endl;
+
+    //std::cout<< "Paddle X: " << _paddle->getBounds().getPosition().x << " X: " << _mousePos.x << std::endl;
+    //std::cout<< "Paddle Y: " << _paddle->getBounds().getPosition().y << " Y: " << _mousePos.y << std::endl;
+    
+   /* if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+    {
+       std::cout << "left button pressed";
+    }*/
 
     // update everything 
     _paddle->update(dt);

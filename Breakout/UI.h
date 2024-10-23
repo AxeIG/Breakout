@@ -13,7 +13,8 @@ public:
 	UI(sf::RenderWindow* window, int lives, GameManager* gameManager);
 	~UI();
 
-	void updatePowerupText(std::pair<POWERUPS, float>);
+	void updatePowerupScreenInfo(std::pair<POWERUPS, float>);
+
 	void lifeLost(int lives);
 	void render();
 
@@ -23,7 +24,8 @@ private:
 	sf::RenderWindow* _window;
 	sf::Font _font;
 	sf::Text _powerupText;
-
+	sf::RectangleShape _progressBar;
+	sf::RectangleShape _progressBorder;
 	std::vector<sf::CircleShape> _lives;
 
 	static constexpr float LIFE_RADIUS = 15.0f;

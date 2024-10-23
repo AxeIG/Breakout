@@ -58,6 +58,7 @@ void Ball::update(float dt)
     {
         _direction.y *= -1;
     }
+    
 
     // lose life bounce
     if (position.y > windowDimensions.y)
@@ -66,6 +67,9 @@ void Ball::update(float dt)
         _direction = { 1, 1 };
         _gameManager->loseLife();
     }
+    sf::Vector2f points = sf::Vector2f(0, 0);
+
+   
 
     // collision with paddle
     if (_sprite.getGlobalBounds().intersects(_gameManager->getPaddle()->getBounds()))
